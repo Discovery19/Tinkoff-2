@@ -1,12 +1,13 @@
 package edu.java.bot.commands;
 
 import com.pengrad.telegrambot.model.Update;
-import com.pengrad.telegrambot.model.request.ParseMode;
 import com.pengrad.telegrambot.request.SendMessage;
 import edu.java.bot.message.TgUserMessageProcessor;
-import lombok.SneakyThrows;
 import java.util.List;
+import lombok.SneakyThrows;
+import org.springframework.stereotype.Component;
 
+@Component
 public class HelpCommand implements Command {
     @Override
     public String command() {
@@ -23,10 +24,11 @@ public class HelpCommand implements Command {
         long chatId = update.message().chat().id();
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("<b>List of commands:</b>").append("\n");
-        List<? extends Command> list = TgUserMessageProcessor.getCommands();
+        List<? extends Command> list = TgUserMessageProcessor.getCOMMANDS();
         for (Command command : list) {
             if (!command.command().isEmpty()) {
-                stringBuilder.append("<b>").append(command.command()).append("</b>").append("\t").append(command.description()).append("\n");
+                stringBuilder.append("<b>").append(command.command()).append("</b>").append("\t")
+                    .append(command.description()).append("\n");
             }
         }
         return new SendMessage(chatId, stringBuilder.toString());

@@ -10,34 +10,27 @@ import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.request.SetMyCommands;
 import com.pengrad.telegrambot.response.BaseResponse;
 import edu.java.bot.commands.Command;
+import edu.java.bot.configuration.ApplicationConfig;
 import edu.java.bot.message.TgUserMessageProcessor;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Slf4j
+@Service
 public class TgBot implements Bot {
 
     private final TelegramBot bot;
     private final TgUserMessageProcessor messageProcessor;
 
-    public TgBot() {
-        // очень плохо, но со спрингом вообще никак не подтягивалось сюда из переменной окружения((
-        String key = "";
-        try (BufferedReader br = new BufferedReader(new FileReader("bot/src/main/resources/tg_key"))){
-            key = br.readLine();
-        } catch (IOException e) {
-            log.error(e.getMessage());
-        }
-        if (key.isEmpty()){
-            log.error("Bot not work");
-        }
-        this.bot = new TelegramBot(key);
-        this.messageProcessor = new TgUserMessageProcessor();
+    @Autowired
+    public TgBot(ApplicationConfig applicationConfig, TgUserMessageProcessor messageProcessor) {
+        this.bot = new TelegramBot(applicationConfig.telegramToken());
+        this.messageProcessor = messageProcessor;
         createMenu();
+        start();
     }
 
     @Override
@@ -81,7 +74,7 @@ public class TgBot implements Bot {
 
     @Override
     public void close() {
-        //????
+        bot.shutdown();
     }
 }
 
