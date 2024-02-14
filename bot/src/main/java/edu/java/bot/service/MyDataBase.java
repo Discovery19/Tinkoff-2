@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class MyDataBase {
     private static final Map<Long, List<String>> DATABASE = new HashMap<>();
-    private static final String REGEX = "(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
+    private static final String REGEX = "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]$";
     private static final Pattern PATTERN = Pattern.compile(REGEX);
 
     private MyDataBase() {

@@ -9,10 +9,12 @@ import edu.java.bot.commands.StartCommand;
 import edu.java.bot.commands.TrackCommand;
 import edu.java.bot.commands.UnknownCommand;
 import edu.java.bot.commands.UntrackCommand;
+import java.util.Arrays;
 import java.util.List;
 import edu.java.bot.service.MyDataBase;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -21,15 +23,20 @@ import org.springframework.stereotype.Service;
 public class TgUserMessageProcessor implements UserMessageProcessor {
     private String waitingForLink = "";
 
-    @Getter private static final List<? extends Command> COMMANDS = List.of(
-        new StartCommand(),
-        new HelpCommand(),
-        new TrackCommand(),
-        new UntrackCommand(),
-        new ListCommand(),
-        //must be last )))
-        new UnknownCommand()
-    );
+    @Getter private static List<? extends Command> COMMANDS = null;
+//        = List.of(
+//        new StartCommand(),
+//        new HelpCommand(),
+//        new TrackCommand(),
+//        new UntrackCommand(),
+//        new ListCommand(),
+//        //must be last )))
+//        new UnknownCommand()
+//    );
+    @Autowired
+    public TgUserMessageProcessor(Command ... commands) {
+        COMMANDS = Arrays.stream(commands).toList();
+    }
 
     @Override
     public List<? extends Command> commands() {
