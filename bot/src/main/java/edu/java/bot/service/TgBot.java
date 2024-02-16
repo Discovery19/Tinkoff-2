@@ -41,9 +41,11 @@ public class TgBot implements Bot {
     @Override
     public int process(List<Update> updates) {
         for (Update update : updates) {
-            SendMessage response = messageProcessor.process(update);
-            if (response != null) {
-                bot.execute(response.parseMode(ParseMode.HTML));
+            if (update.message() != null) {
+                SendMessage response = messageProcessor.process(update);
+                if (response != null) {
+                    bot.execute(response.parseMode(ParseMode.HTML));
+                }
             }
         }
         return UpdatesListener.CONFIRMED_UPDATES_ALL;
@@ -61,17 +63,19 @@ public class TgBot implements Bot {
         });
     }
 
+    //TODO
     public void createMenu() {
         List<BotCommand> listOfCommands = new ArrayList<>();
-        for (Command command : messageProcessor.commands()) {
-            if (!command.command().equals("/unknown")) {
-                listOfCommands.add(command.toApiCommand());
-            }
+        for (Command command : messageProcessor.commands()
+            .stream().filter(command -> !command.command().equals("/unknown"))
+            .toList()) {
+            listOfCommands.add(command.toApiCommand());
         }
         BotCommand[] commandsArray = listOfCommands.toArray(new BotCommand[0]);
         this.execute(new SetMyCommands(commandsArray));
     }
 
+    //
     @Override
     public void close() {
         bot.shutdown();
