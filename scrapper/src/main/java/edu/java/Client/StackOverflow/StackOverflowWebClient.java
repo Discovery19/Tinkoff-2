@@ -1,11 +1,9 @@
 package edu.java.Client.StackOverflow;
 
 import edu.java.Response.QuestionResponse;
-import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-@Component
 public class StackOverflowWebClient implements StackOverflowClient {
 
     private final WebClient webClient;
