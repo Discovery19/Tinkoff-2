@@ -1,8 +1,8 @@
 package edu.java.scrapper;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import edu.java.Client.GitHub.GitHubWebClient;
-import edu.java.Response.RepositoryResponse;
+import edu.java.client.gitHub.GitHubWebClient;
+import edu.java.response.RepositoryResponse;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -29,7 +29,7 @@ public class GitHubAPITest {
                     .withHeader("Content-Type", "application/json")
                     .withBody(Files.readAllBytes(
                             Path.of(Objects.requireNonNull(GitHubAPITest.class
-                                    .getResource("/GitHubResponseExample")
+                                    .getResource("/GitHubResponseExample.json")
                                 ).toURI()
                             )
                         )
