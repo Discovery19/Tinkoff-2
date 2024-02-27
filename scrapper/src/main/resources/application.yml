@@ -8,6 +8,12 @@ spring:
   application:
     name: scrapper
 
+spring-doc:
+  api-docs:
+    path: /v3/api-docs  # Путь к JSON спецификации
+  swagger-ui:
+    path: /swagger-ui.html  # Путь к странице Swagger UI
+
 server:
   port: 8080
 
