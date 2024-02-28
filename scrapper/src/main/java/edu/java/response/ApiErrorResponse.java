@@ -1,10 +1,7 @@
-package edu.java.Response;
+package edu.java.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.validation.annotation.Validated;
@@ -15,7 +12,7 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 @Getter
 @Setter
-public class ApiErrorResponse   {
+public class ApiErrorResponse {
     @JsonProperty("description")
     private String description = null;
 
@@ -28,7 +25,6 @@ public class ApiErrorResponse   {
     @JsonProperty("exceptionMessage")
     private String exceptionMessage = null;
 
-
     public ApiErrorResponse description(String description) {
         this.description = description;
         return this;
@@ -36,6 +32,7 @@ public class ApiErrorResponse   {
 
     /**
      * Get description
+     *
      * @return description
      **/
     @Schema(description = "")
@@ -55,6 +52,7 @@ public class ApiErrorResponse   {
 
     /**
      * Get code
+     *
      * @return code
      **/
     @Schema(description = "")
@@ -74,6 +72,7 @@ public class ApiErrorResponse   {
 
     /**
      * Get exceptionName
+     *
      * @return exceptionName
      **/
     @Schema(description = "")
@@ -93,6 +92,7 @@ public class ApiErrorResponse   {
 
     /**
      * Get exceptionMessage
+     *
      * @return exceptionMessage
      **/
     @Schema(description = "")
@@ -104,6 +104,5 @@ public class ApiErrorResponse   {
     public void setExceptionMessage(String exceptionMessage) {
         this.exceptionMessage = exceptionMessage;
     }
-
 
 }

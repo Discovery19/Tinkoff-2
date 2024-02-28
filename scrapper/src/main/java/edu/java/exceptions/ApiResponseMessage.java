@@ -1,4 +1,4 @@
-package edu.java.Exceptions;
+package edu.java.exceptions;
 
 import lombok.Getter;
 
@@ -41,7 +41,8 @@ public class ApiResponseMessage {
         }
         this.message = message;
     }
+
     private void setType(String type) {
-        this.type= type;
+        this.type = type;
     }
 }

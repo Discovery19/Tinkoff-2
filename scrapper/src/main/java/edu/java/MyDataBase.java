@@ -1,15 +1,13 @@
 package edu.java;
 
 import edu.java.DTO.AllLinksDTO;
-import edu.java.DTO.ResponseDTO;
-import lombok.extern.slf4j.Slf4j;
 import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class MyDataBase {
@@ -26,11 +24,11 @@ public class MyDataBase {
 
     public static boolean add(Long chatId, URI link) {
 //        if (PATTERN.matcher(link).matches()) {
-            DATABASE.merge(chatId, new ArrayList<>(List.of(link)), (existingList, newList) -> {
-                existingList.addAll(newList);
-                return existingList;
-            });
-            return true;
+        DATABASE.merge(chatId, new ArrayList<>(List.of(link)), (existingList, newList) -> {
+            existingList.addAll(newList);
+            return existingList;
+        });
+        return true;
 //        } else {
 //            return false;
 //        }

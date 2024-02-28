@@ -1,6 +1,6 @@
-package edu.java.Client.StackOverflow;
+package edu.java.client.stackOverflow;
 
-import edu.java.Response.QuestionResponse;
+import edu.java.response.QuestionResponse;
 import reactor.core.publisher.Mono;
 
 public interface StackOverflowClient {
