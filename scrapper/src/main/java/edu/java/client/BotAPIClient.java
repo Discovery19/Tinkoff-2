@@ -1,25 +1,30 @@
 package edu.java.client;
 
-import edu.java.response.LinkRequest;
+import edu.java.requests.BotRequest;
+import edu.java.response.BotResponse;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 public class BotAPIClient {
     private final WebClient webClient;
+
+    public BotAPIClient(WebClient webClient) {
+        this.webClient = webClient;
+    }
 
     public BotAPIClient(String baseUrl) {
         this.webClient = WebClient.builder().baseUrl(baseUrl).build();
     }
 
-    public Mono<Void> sendUpdate(LinkRequest linkRequest) {
+    public ResponseEntity<BotResponse> sendUpdate(BotRequest request) {
         return webClient.post()
             .uri("/updates")
             .contentType(MediaType.APPLICATION_JSON)
-            .body(BodyInserters.fromValue(linkRequest))
+            .body(BodyInserters.fromValue(request))
             .retrieve()
-            .bodyToMono(Void.class);
+            .toEntity(BotResponse.class).block();
     }
 
 }

@@ -1,5 +1,8 @@
 package edu.java.configuration;
 
+import edu.java.client.BotAPIClient;
+import edu.java.client.gitHub.GitHubWebClient;
+import edu.java.client.stackOverflow.StackOverflowWebClient;
 import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -18,6 +21,7 @@ public record ApplicationConfig(
 
     private static final String GITHUB_BASE_URL = "https://api.github.com";
     private static final String STACKOVERFLOW_BASE_URL = "https://api.stackexchange.com";
+    private static final String BASE_URL = "http://local.host:8090";
 
     @Bean
     public WebClient githubWebClient() {
@@ -25,8 +29,18 @@ public record ApplicationConfig(
     }
 
     @Bean
-    public WebClient stackOverflowWebClient() {
-        return WebClient.builder().baseUrl(STACKOVERFLOW_BASE_URL).build();
+    GitHubWebClient gitHubClient() {
+        return new GitHubWebClient(GITHUB_BASE_URL);
+    }
+
+    @Bean
+    StackOverflowWebClient stackOverflowClient() {
+        return new StackOverflowWebClient(STACKOVERFLOW_BASE_URL);
+    }
+
+    @Bean
+    public BotAPIClient botAPIClient() {
+        return new BotAPIClient(BASE_URL);
     }
 
     public record Scheduler(boolean enable, @NotNull Duration interval, @NotNull Duration forceCheckDelay) {

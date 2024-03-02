@@ -12,6 +12,7 @@ import com.pengrad.telegrambot.response.BaseResponse;
 import edu.java.bot.commands.Command;
 import edu.java.bot.configuration.ApplicationConfig;
 import edu.java.bot.message.TgUserMessageProcessor;
+import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ public class TgBot implements Bot {
 
     @Autowired
     public TgBot(ApplicationConfig applicationConfig, TgUserMessageProcessor messageProcessor) {
+        log.info("Starting bot");
         this.bot = new TelegramBot(applicationConfig.telegramToken());
         this.messageProcessor = messageProcessor;
         createMenu();
@@ -40,18 +42,22 @@ public class TgBot implements Bot {
 
     @Override
     public int process(List<Update> updates) {
+        log.info("updates: ");
         for (Update update : updates) {
             if (update.message() != null) {
+                log.info("message");
                 SendMessage response = messageProcessor.process(update);
                 if (response != null) {
                     bot.execute(response.parseMode(ParseMode.HTML));
                 }
             }
+            log.info("null message");
         }
         return UpdatesListener.CONFIRMED_UPDATES_ALL;
     }
 
     @Override
+    @PostConstruct
     public void start() {
         bot.setUpdatesListener(this, e -> {
             if (e.response() != null) {
@@ -64,6 +70,7 @@ public class TgBot implements Bot {
     }
 
     //TODO
+    @PostConstruct
     public void createMenu() {
         List<BotCommand> listOfCommands = new ArrayList<>();
         for (Command command : messageProcessor.commands()
