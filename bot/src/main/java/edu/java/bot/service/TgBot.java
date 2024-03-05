@@ -69,7 +69,6 @@ public class TgBot implements Bot {
         });
     }
 
-    //TODO
     @PostConstruct
     public void createMenu() {
         List<BotCommand> listOfCommands = new ArrayList<>();
@@ -82,7 +81,6 @@ public class TgBot implements Bot {
         this.execute(new SetMyCommands(commandsArray));
     }
 
-    //
     @Override
     public void close() {
         bot.shutdown();

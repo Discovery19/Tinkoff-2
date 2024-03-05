@@ -1,4 +1,4 @@
-package edu.java.bot.Controllers;
+package edu.java.bot.controllers;
 
 import edu.java.bot.requests.BotRequest;
 import edu.java.bot.responses.BotResponse;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BotController implements BotInterface {
-    BotService botService;
+    private final BotService botService;
 
     public BotController(BotService service) {
         this.botService = service;

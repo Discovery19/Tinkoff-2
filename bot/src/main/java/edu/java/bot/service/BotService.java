@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BotService {
-    TgBot tgBot;
+    private final TgBot tgBot;
 
     public BotService(TgBot tgBot) {
         this.tgBot = tgBot;

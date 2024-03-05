@@ -1,4 +1,4 @@
-package edu.java.bot.Controllers;
+package edu.java.bot.controllers;
 
 import edu.java.bot.requests.BotRequest;
 import edu.java.bot.responses.BotResponse;

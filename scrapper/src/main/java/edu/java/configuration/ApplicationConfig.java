@@ -1,8 +1,8 @@
 package edu.java.configuration;
 
 import edu.java.client.BotAPIClient;
-import edu.java.client.gitHub.GitHubWebClient;
-import edu.java.client.stackOverflow.StackOverflowWebClient;
+import edu.java.client.github.GitHubWebClient;
+import edu.java.client.stackoverflow.StackOverflowWebClient;
 import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
