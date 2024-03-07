@@ -1,8 +1,8 @@
-package edu.java.service;
+package edu.java.api.service;
 
-import edu.java.requests.LinkRequest;
-import edu.java.response.LinkResponse;
-import edu.java.response.ListLinksResponse;
+import edu.java.api.response.api_response.LinkResponse;
+import edu.java.api.response.api_response.ListLinksResponse;
+import edu.java.api.requests.LinkRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

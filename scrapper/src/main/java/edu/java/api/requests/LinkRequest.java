@@ -1,4 +1,4 @@
-package edu.java.requests;
+package edu.java.api.requests;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.URI;

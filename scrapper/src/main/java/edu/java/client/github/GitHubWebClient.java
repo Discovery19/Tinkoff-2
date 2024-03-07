@@ -1,6 +1,6 @@
 package edu.java.client.github;
 
-import edu.java.response.RepositoryResponse;
+import edu.java.api.response.client_response.RepositoryResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 

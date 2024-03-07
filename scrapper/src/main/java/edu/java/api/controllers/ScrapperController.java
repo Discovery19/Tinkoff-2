@@ -1,9 +1,12 @@
-package edu.java.controllers;
+package edu.java.api.controllers;
 
-import edu.java.requests.LinkRequest;
-import edu.java.response.LinkResponse;
-import edu.java.response.ListLinksResponse;
-import edu.java.service.ScrapperServiceInterface;
+import edu.java.api.repositories.TgChatRepository;
+import edu.java.api.response.api_response.LinkResponse;
+import edu.java.api.response.api_response.ListLinksResponse;
+import edu.java.api.requests.LinkRequest;
+import edu.java.api.service.ScrapperServiceInterface;
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,6 +41,14 @@ public class ScrapperController implements ScrapperInterface {
     @Override
     public ResponseEntity<LinkResponse> untrackLink(Long id, LinkRequest request) {
         return scrapperService.untrackLink(id, request);
+    }
+
+    //TODO DELETE этот позор
+    @Autowired
+    TgChatRepository defaultChatDao;
+    @PostConstruct
+    void Do(){
+        defaultChatDao.findAll(1L);
     }
 
 }

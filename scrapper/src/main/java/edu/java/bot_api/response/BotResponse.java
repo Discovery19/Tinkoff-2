@@ -1,4 +1,4 @@
-package edu.java.response;
+package edu.java.bot_api.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.URI;

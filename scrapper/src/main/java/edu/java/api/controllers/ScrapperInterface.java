@@ -1,9 +1,9 @@
-package edu.java.controllers;
+package edu.java.api.controllers;
 
-import edu.java.requests.LinkRequest;
-import edu.java.response.ApiErrorResponse;
-import edu.java.response.LinkResponse;
-import edu.java.response.ListLinksResponse;
+import edu.java.api.response.api_response.ApiErrorResponse;
+import edu.java.api.response.api_response.LinkResponse;
+import edu.java.api.response.api_response.ListLinksResponse;
+import edu.java.api.requests.LinkRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -1,4 +1,4 @@
-package edu.java.exceptions;
+package edu.java.api.exceptions;
 
 public class ApiException extends Exception {
     public ApiException(String msg) {

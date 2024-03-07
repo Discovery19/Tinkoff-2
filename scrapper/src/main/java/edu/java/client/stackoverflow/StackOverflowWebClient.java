@@ -1,6 +1,6 @@
 package edu.java.client.stackoverflow;
 
-import edu.java.response.QuestionResponse;
+import edu.java.api.response.client_response.QuestionResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 

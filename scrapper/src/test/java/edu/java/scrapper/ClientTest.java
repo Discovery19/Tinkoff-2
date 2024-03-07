@@ -1,9 +1,9 @@
 package edu.java.scrapper;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import edu.java.client.BotAPIClient;
-import edu.java.requests.BotRequest;
-import edu.java.response.BotResponse;
+import edu.java.bot_api.client.BotAPIClient;
+import edu.java.bot_api.request.BotRequest;
+import edu.java.bot_api.response.BotResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

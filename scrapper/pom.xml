@@ -121,7 +121,6 @@
             <artifactId>kafka</artifactId>
             <scope>test</scope>
         </dependency>
-
         <!-- swagger-->
         <dependency>
             <groupId>org.springdoc</groupId>

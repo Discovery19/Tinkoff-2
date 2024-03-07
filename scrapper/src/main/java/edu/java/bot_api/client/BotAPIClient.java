@@ -1,7 +1,7 @@
-package edu.java.client;
+package edu.java.bot_api.client;
 
-import edu.java.requests.BotRequest;
-import edu.java.response.BotResponse;
+import edu.java.bot_api.request.BotRequest;
+import edu.java.bot_api.response.BotResponse;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.BodyInserters;

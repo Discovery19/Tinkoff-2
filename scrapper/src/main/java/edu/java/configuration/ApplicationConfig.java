@@ -1,6 +1,6 @@
 package edu.java.configuration;
 
-import edu.java.client.BotAPIClient;
+import edu.java.bot_api.client.BotAPIClient;
 import edu.java.client.github.GitHubWebClient;
 import edu.java.client.stackoverflow.StackOverflowWebClient;
 import jakarta.validation.constraints.NotNull;
