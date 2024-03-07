@@ -1,3 +1,6 @@
+--liquibase formatted sql
+
+--changeset nevinture:1
 create table links (
     id bigserial primary key,
     url text NOT NULL,

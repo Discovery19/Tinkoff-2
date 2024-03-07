@@ -1,15 +1,14 @@
 package edu.java.scrapper;
 
-import org.junit.Test;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class MyTest extends IntegrationTest {
-
+public class MyTest extends IntegrationTest{
     @Test
     public void testContainerStartupAndMigration() throws SQLException {
         //проверка запуска контейнера
@@ -37,3 +36,4 @@ public class MyTest extends IntegrationTest {
         POSTGRES.stop();
     }
 }
+
