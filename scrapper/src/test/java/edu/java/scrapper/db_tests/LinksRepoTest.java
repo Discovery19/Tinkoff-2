@@ -20,27 +20,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class LinksRepoTest extends IntegrationTest {
     @Autowired
     private JdbcLinksRepository linksRepository;
-
-    @BeforeAll
-    public static void setUp() {
-        System.out.println("Database started");
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl(POSTGRES.getJdbcUrl());
-        dataSource.setUsername("postgres");
-        dataSource.setPassword("postgres");
-
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-
-        jdbcTemplate.update("insert into chats (id) values (?)", 1L);
-        jdbcTemplate.update("insert into links (url) values (?)", "link1.com");
-        jdbcTemplate.update("insert into link_chat (link_id, chat_id) values (?, ?)", 1L, 1L);
-    }
-
-    @AfterAll
-    public static void tearDown() {
-
-    }
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
     @Test
     @Transactional
@@ -48,11 +29,14 @@ public class LinksRepoTest extends IntegrationTest {
     void addLinkTest() throws URISyntaxException {
 
         assertTrue(POSTGRES.isRunning());
-
+        jdbcTemplate.update("insert into chats (id) values (?)", 1L);
         linksRepository.add(1L, new URI("link.com"));
 
         var res = linksRepository.findAll(1L);
-        assertEquals(2, res.size());
+        assertEquals(1, res.size());
+        jdbcTemplate.update("delete from chats");
+        jdbcTemplate.update("delete from links");
+        jdbcTemplate.update("delete from link_chat");
     }
 
     @Test
@@ -60,7 +44,8 @@ public class LinksRepoTest extends IntegrationTest {
     @Rollback
     void removeLinkTest() throws URISyntaxException {
         assertTrue(POSTGRES.isRunning());
-
+        jdbcTemplate.update("insert into chats (id) values (?)", 1L);
+        jdbcTemplate.update("insert into links (url) values (?)", "link1.com");
         linksRepository.remove(1L, new URI("link1.com"));
 
         var res = linksRepository.findAll(1L);
