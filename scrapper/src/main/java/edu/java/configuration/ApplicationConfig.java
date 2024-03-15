@@ -21,7 +21,7 @@ public record ApplicationConfig(
 
     private static final String GITHUB_BASE_URL = "https://api.github.com";
     private static final String STACKOVERFLOW_BASE_URL = "https://api.stackexchange.com";
-    private static final String BASE_URL = "http://local.host:8090";
+    private static final String BASE_URL = "http://localhost:8090";
 
     @Bean
     public WebClient githubWebClient() {
@@ -43,7 +43,10 @@ public record ApplicationConfig(
         return new BotAPIClient(BASE_URL);
     }
 
-    public record Scheduler(boolean enable, @NotNull Duration interval, @NotNull Duration forceCheckDelay) {
+    public record Scheduler(boolean enable,
+                            @NotNull Duration interval,
+                            @NotNull Duration forceCheckDelay,
+                            @NotNull Duration linkCheckingFrequency) {
     }
 
 }

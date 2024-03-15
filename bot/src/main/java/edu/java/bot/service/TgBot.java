@@ -2,18 +2,14 @@ package edu.java.bot.service;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
-import com.pengrad.telegrambot.model.BotCommand;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.request.ParseMode;
 import com.pengrad.telegrambot.request.BaseRequest;
 import com.pengrad.telegrambot.request.SendMessage;
-import com.pengrad.telegrambot.request.SetMyCommands;
 import com.pengrad.telegrambot.response.BaseResponse;
-import edu.java.bot.commands.Command;
 import edu.java.bot.configuration.ApplicationConfig;
 import edu.java.bot.message.TgUserMessageProcessor;
 import jakarta.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +27,8 @@ public class TgBot implements Bot {
         log.info("Starting bot");
         this.bot = new TelegramBot(applicationConfig.telegramToken());
         this.messageProcessor = messageProcessor;
-        createMenu();
-        start();
+        //createMenu();
+        //start();
     }
 
     @Override
@@ -44,12 +40,17 @@ public class TgBot implements Bot {
     public int process(List<Update> updates) {
         log.info("updates: ");
         for (Update update : updates) {
-            if (update.message() != null) {
-                log.info("message");
-                SendMessage response = messageProcessor.process(update);
-                if (response != null) {
-                    bot.execute(response.parseMode(ParseMode.HTML));
+            try {
+                if (update.message() != null) {
+                    log.info(update.message().toString());
+                    log.info("message");
+                    SendMessage response = messageProcessor.process(update);
+                    if (response != null) {
+                        bot.execute(response.parseMode(ParseMode.HTML));
+                    }
                 }
+            } catch (RuntimeException e) {
+                log.error("exception");
             }
             log.info("null message");
         }
@@ -69,17 +70,17 @@ public class TgBot implements Bot {
         });
     }
 
-    @PostConstruct
-    public void createMenu() {
-        List<BotCommand> listOfCommands = new ArrayList<>();
-        for (Command command : messageProcessor.commands()
-            .stream().filter(command -> !command.command().equals("/unknown"))
-            .toList()) {
-            listOfCommands.add(command.toApiCommand());
-        }
-        BotCommand[] commandsArray = listOfCommands.toArray(new BotCommand[0]);
-        this.execute(new SetMyCommands(commandsArray));
-    }
+//    @PostConstruct
+//    public void createMenu() {
+//        List<BotCommand> listOfCommands = new ArrayList<>();
+//        for (Command command : messageProcessor.commands()
+//            .stream().filter(command -> !command.command().equals("/unknown"))
+//            .toList()) {
+//            listOfCommands.add(command.toApiCommand());
+//        }
+//        BotCommand[] commandsArray = listOfCommands.toArray(new BotCommand[0]);
+//        this.execute(new SetMyCommands(commandsArray));
+//    }
 
     @Override
     public void close() {

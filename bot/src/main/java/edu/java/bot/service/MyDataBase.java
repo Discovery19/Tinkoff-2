@@ -14,7 +14,7 @@ public class MyDataBase {
     private MyDataBase() {
     }
 
-    public static boolean add(Long chatId, String link) {
+    public  boolean add(Long chatId, String link) {
         if (PATTERN.matcher(link).matches()) {
             DATABASE.merge(chatId, new ArrayList<>(List.of(link)), (existingList, newList) -> {
                 existingList.addAll(newList);
@@ -26,7 +26,7 @@ public class MyDataBase {
         }
     }
 
-    public static boolean remove(Long chatId, String link) {
+    public  boolean remove(Long chatId, String link) {
         if (PATTERN.matcher(link).matches() && DATABASE.containsKey(chatId) && DATABASE.get(chatId).contains(link)) {
             DATABASE.merge(chatId, List.of(), (existingList, newList) -> {
                 existingList.remove(link);

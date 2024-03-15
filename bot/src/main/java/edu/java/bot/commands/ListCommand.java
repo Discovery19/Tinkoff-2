@@ -2,11 +2,15 @@ package edu.java.bot.commands;
 
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
-import edu.java.bot.service.MyDataBase;
+import edu.java.bot.client.ScrapperAPIClient;
+import edu.java.bot.responses.LinkResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class ListCommand implements Command {
+    private final ScrapperAPIClient scrapperAPIClient;
 
     @Override
     public String command() {
@@ -21,13 +25,10 @@ public class ListCommand implements Command {
     @Override
     public SendMessage handle(Update update) {
         long chatId = update.message().chat().id();
-
-        if (MyDataBase.getLinks(chatId) == null) {
-            return new SendMessage(chatId, "Вы не добавили ни одной ссылки((");
-        }
+        var links = scrapperAPIClient.getLinks(chatId).getBody().links();
         StringBuilder stringBuilder = new StringBuilder();
-        for (String str : MyDataBase.getLinks(chatId)) {
-            stringBuilder.append(str).append("\n");
+        for (LinkResponse str : links) {
+            stringBuilder.append(str.link()).append("\n");
         }
         return new SendMessage(chatId, stringBuilder.toString());
     }

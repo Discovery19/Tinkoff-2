@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class TgUserMessageProcessor implements UserMessageProcessor {
     private final List<? extends Command> commands;
 
+
     @Autowired
     public TgUserMessageProcessor(Command... commands) {
         log.info("processor start");
