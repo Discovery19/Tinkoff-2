@@ -11,7 +11,8 @@ public record QuestionResponse(
     public record QuestionItem(
         @JsonProperty("last_activity_date") OffsetDateTime lastActivityDate,
         @JsonProperty("title") String title,
-        @JsonProperty("link") String link
+        @JsonProperty("link") String link,
+        @JsonProperty("answer_count") int answerCount
     ) {
 
     }

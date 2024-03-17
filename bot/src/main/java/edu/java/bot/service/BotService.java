@@ -18,8 +18,8 @@ public class BotService {
     public ResponseEntity<BotResponse> update(BotRequest botRequest) {
         List<Long> usersToWrite = botRequest.tgChatsIds();
         for (Long userId : usersToWrite) {
-            tgBot.execute(new SendMessage(userId, botRequest.link().toString()));
+            tgBot.execute(new SendMessage(userId, botRequest.description()+"\n"+botRequest.link().toString()));
         }
-        return ResponseEntity.ok(new BotResponse(botRequest.link()));
+        return ResponseEntity.ok(new BotResponse(botRequest.link(), botRequest.description()));
     }
 }

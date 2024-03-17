@@ -45,4 +45,33 @@ public class JdbcSchedulerRepository implements SchedulerRepository {
     public List<Long> getSubscribedChats(Long linkId) {
         return jdbcTemplate.queryForList("select chat_id from link_chat where link_id = ?", Long.class, linkId);
     }
+
+    @Override
+    public Integer checkGitColumn(URI url) {
+        return jdbcTemplate.queryForObject(
+            "select open_issues from links where url = ?",
+            Integer.class,
+            url.toString()
+        );
+    }
+
+    @Override
+    public Integer checkStackColumn(URI url) {
+        return jdbcTemplate.queryForObject(
+            "select answer_count from links where url = ?",
+            Integer.class,
+            url.toString()
+        );
+    }
+
+    @Override
+    public void insertStackColumn(URI url, int answerCount) {
+        jdbcTemplate.update("update links set answer_count = ? where url = ?", answerCount, url.toString());
+    }
+
+    @Override
+    public void insertGitColumn(URI url, int openIssues) {
+        jdbcTemplate.update("update links set open_issues = ? where url = ?", openIssues, url.toString());
+    }
+
 }
