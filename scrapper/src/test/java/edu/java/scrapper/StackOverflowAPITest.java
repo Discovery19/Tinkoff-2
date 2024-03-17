@@ -46,7 +46,7 @@ public class StackOverflowAPITest {
                 List.of(new QuestionResponse.QuestionItem(
                     OffsetDateTime.parse("2014-05-30T05:29:52Z")
                     , "Get questions content from Stack Exchange API"
-                    , "https://stackoverflow.com/questions/20089818/get-questions-content-from-stack-exchange-api"))
+                    , "https://stackoverflow.com/questions/20089818/get-questions-content-from-stack-exchange-api", 2))
             ), response
         );
         wireMockServer.shutdown();
