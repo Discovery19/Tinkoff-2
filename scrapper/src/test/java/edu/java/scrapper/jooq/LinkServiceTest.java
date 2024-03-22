@@ -4,6 +4,7 @@ import edu.java.api.requests.LinkRequest;
 import edu.java.api.response.api_response.LinkResponse;
 import edu.java.api.response.api_response.ListLinksResponse;
 import edu.java.api.service.LinkService;
+import edu.java.api.service.jooq.JooqLinkService;
 import edu.java.scrapper.IntegrationTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class LinkServiceTest extends IntegrationTest {
     @Autowired
-    @Qualifier("jooqLinkService")
     LinkService service;
 
     @Autowired

@@ -18,7 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 class JpaLinkTest extends IntegrationTest {
     @Autowired
-    @Qualifier("jpaLinkService")
     private LinkService service;
     @Autowired
     private JdbcLinkRepository linksRepository;

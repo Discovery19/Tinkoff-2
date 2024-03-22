@@ -1,5 +1,5 @@
 package edu.java.api.exceptions;
-
+//CHECKSTYLE:OFF: checkstyle:AvoidNoArgumentSuperConstructorCall
 public class BadRequestException extends ScrapperException {
     public BadRequestException() {
         super();

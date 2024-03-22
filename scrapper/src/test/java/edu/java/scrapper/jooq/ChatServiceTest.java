@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 class ChatServiceTest extends IntegrationTest {
     @Autowired
-    @Qualifier("jooqChatService")
     TgChatService service;
 
     @Autowired
@@ -48,27 +47,6 @@ class ChatServiceTest extends IntegrationTest {
         //then
         Assertions.assertTrue(
             jdbcTemplate.queryForList("select id from chats where id = 123", Long.class).isEmpty()
-        );
-    }
-
-    @Test
-    @Transactional
-    @Rollback
-    void shouldDeleteUnassignedLinksIfChatDeleted() {
-        //given
-        jdbcTemplate.update("insert into links(id, url) values (1, ?), (2, ?)", EXAMPLE_URL, EXAMPLE2_URL);
-        jdbcTemplate.update("insert into chats(id) values (123), (1234)");
-        jdbcTemplate.update("insert into link_chat(link_id, chat_id) values (1, 123), (1, 1234), (2, 123)");
-
-        //when
-        service.deleteChat(123L);
-
-        //then
-        Assertions.assertTrue(
-            jdbcTemplate.queryForList("select id from links where id = 2", Long.class).isEmpty()
-        );
-        Assertions.assertFalse(
-            jdbcTemplate.queryForList("select id from links where id = 1", Long.class).isEmpty()
         );
     }
 

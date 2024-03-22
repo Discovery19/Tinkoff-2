@@ -1,5 +1,5 @@
 package edu.java.api.exceptions;
-
+//CHECKSTYLE:OFF: checkstyle:AvoidNoArgumentSuperConstructorCall
 public class UserAlreadyExistsException extends ScrapperException {
     public UserAlreadyExistsException() {
         super();

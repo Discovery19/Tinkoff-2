@@ -1,5 +1,7 @@
 package edu.java.configuration.access;
 
+import edu.java.api.repositories.ChatsRepository;
+import edu.java.api.repositories.LinksRepository;
 import edu.java.api.repositories.jdbc.JdbcChatRepository;
 import edu.java.api.repositories.jdbc.JdbcLinkRepository;
 import edu.java.api.service.LinkService;
@@ -15,8 +17,8 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnProperty(prefix = "app", name = "database-access-type", havingValue = "jdbc")
 @RequiredArgsConstructor
 public class JdbcAccessConfiguration {
-    private final JdbcChatRepository jdbcChatRepository;
-    private final JdbcLinkRepository jdbcLinkRepository;
+    private final ChatsRepository jdbcChatRepository;
+    private final LinksRepository jdbcLinkRepository;
 
     @Bean
     public LinkService jdbcLinkService(JdbcLinkRepository jdbcLinkRepository) {

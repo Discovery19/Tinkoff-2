@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-public class ChatsRepoTest extends IntegrationTest {
+class ChatsRepoTest extends IntegrationTest {
 
     @Autowired
     private JdbcChatRepository chatRepository;
