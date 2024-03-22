@@ -16,10 +16,8 @@ import java.util.Objects;
 import org.jooq.DSLContext;
 import org.jooq.Record2;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service("jooqLinkService")
 public class JooqLinkService implements LinkService {
     private final DSLContext dslContext;
     private final Chats chat = Chats.CHATS;

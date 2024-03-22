@@ -1,13 +1,14 @@
-package edu.java.scrapper;
+package edu.java.scrapper.api_client;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import edu.java.client.github.GitHubWebClient;
-import edu.java.api.response.client_response.RepositoryResponse;
+import edu.java.client.stackoverflow.StackOverflowWebClient;
+import edu.java.api.response.client_response.QuestionResponse;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.Objects;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -16,36 +17,37 @@ import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 
-public class GitHubAPITest {
+public class StackOverflowAPITest {
     @Test
-    public void gitHubClientTest() throws IOException, URISyntaxException {
+    public void testStackOverflowAPI() throws IOException, URISyntaxException {
         WireMockServer wireMockServer = new WireMockServer();
         wireMockServer.start();
         configureFor("localhost", 8080);
         //given
         wireMockServer.stubFor(
-            get(urlEqualTo("/repos/testUser/testRep"))
+            get(urlEqualTo("/2.3/questions/20089818?order=desc&sort=activity&site=stackoverflow"))
                 .willReturn(aResponse()
                     .withHeader("Content-Type", "application/json")
                     .withBody(Files.readAllBytes(
-                            Path.of(Objects.requireNonNull(GitHubAPITest.class
-                                    .getResource("/GitHubResponseExample")
+                            Path.of(Objects.requireNonNull(StackOverflowAPITest.class
+                                    .getResource("/StackOverflowResponseExample")
                                 ).toURI()
                             )
                         )
                     )
                 )
         );
-        GitHubWebClient client = new GitHubWebClient("http://localhost:8080");
+        StackOverflowWebClient client = new StackOverflowWebClient("http://localhost:8080");
         //when
-        RepositoryResponse gitHubResponse = client.fetchRepository("testUser", "testRep").block();
+        QuestionResponse response = client.fetchQuestion(20089818).block();
         //then
         Assertions.assertEquals(
-            new RepositoryResponse(
-                OffsetDateTime.parse("2024-02-16T19:40:25Z")
-                , "https://github.com/Discovery19/Tinkoff-2", 1
-            ), gitHubResponse
-
+            new QuestionResponse(
+                List.of(new QuestionResponse.QuestionItem(
+                    OffsetDateTime.parse("2014-05-30T05:29:52Z")
+                    , "Get questions content from Stack Exchange API"
+                    , "https://stackoverflow.com/questions/20089818/get-questions-content-from-stack-exchange-api", 2))
+            ), response
         );
         wireMockServer.shutdown();
     }

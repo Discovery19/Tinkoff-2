@@ -1,5 +1,6 @@
-package edu.java.api.repositories;
+package edu.java.api.repositories.jdbc;
 
+import edu.java.api.repositories.ChatsRepository;
 import edu.java.api.repositories.dto.ChatDTO;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -15,10 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Slf4j
-public class JdbcChatsRepository implements ChatsRepository {
+public class JdbcChatRepository implements ChatsRepository {
     private final JdbcTemplate jdbcTemplate;
 
-    public JdbcChatsRepository(JdbcTemplate jdbcTemplate) {
+    public JdbcChatRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
