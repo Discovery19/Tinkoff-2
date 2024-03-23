@@ -1,8 +1,8 @@
 package edu.java.exceptions;
 
-import edu.java.api.response.api_response.ApiErrorResponse;
 import java.util.Arrays;
 import java.util.stream.Collectors;
+import edu.java.response.ApiErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
