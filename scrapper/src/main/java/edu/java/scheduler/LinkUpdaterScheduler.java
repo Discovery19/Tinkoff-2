@@ -10,13 +10,10 @@ import edu.java.client.stackoverflow.StackOverflowClient;
 import edu.java.configuration.ApplicationConfig;
 import java.net.URI;
 import java.time.OffsetDateTime;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.common.errors.ResourceNotFoundException;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -53,20 +50,22 @@ public class LinkUpdaterScheduler {
     }
 
     private OffsetDateTime fetchUrl(URI url) {
-        String pattern = "https://github.com/(\\w+)/([^/]+)";
-        Pattern r = Pattern.compile(pattern);
-        Matcher m = r.matcher(String.valueOf(url));
-        if (m.find()) {
-            String owner = m.group(1);
-            String repo = m.group(2);
-            RepositoryResponse response = gitHubClient.fetchRepository(owner, repo).block();
-            return response.pushedAt();
-        } else {
-            long questionId = Long.parseLong(Objects.requireNonNull(Arrays.stream(url.toString().split("/"))
-                .filter(part -> part.matches("\\d+"))
-                .findFirst().orElse(null)));
-            QuestionResponse response = stackOverflowClient.fetchQuestion(questionId).block();
-            return response.items().getFirst().lastActivityDate();
+        var host = url.getHost();
+        switch (host) {
+            case "github.com" -> {
+                String[] gitSegments = url.getPath().split("/");
+                String owner = gitSegments[1];
+                String repo = gitSegments[2];
+                RepositoryResponse response = gitHubClient.fetchRepository(owner, repo).block();
+                return response.pushedAt();
+            }
+            case "stackoverflow.com" -> {
+                String[] stackSegments = url.getPath().split("/");
+                long questionId = Long.parseLong(stackSegments[2]);
+                QuestionResponse response = stackOverflowClient.fetchQuestion(questionId).block();
+                return response.items().getFirst().lastActivityDate();
+            }
+            default -> throw new ResourceNotFoundException("Unknown resource");
         }
     }
 

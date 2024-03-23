@@ -1,12 +1,12 @@
 package edu.java.api.service;
 
-import edu.java.api.repositories.JdbcChatsRepository;
+import edu.java.api.repositories.jdbc.JdbcChatsRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
 public class JdbcTgChatService implements TgChatService {
-    JdbcChatsRepository jdbcChatsRepository;
+    private final JdbcChatsRepository jdbcChatsRepository;
 
     public JdbcTgChatService(JdbcChatsRepository tg) {
         this.jdbcChatsRepository = tg;

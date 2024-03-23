@@ -1,5 +1,6 @@
-package edu.java.api.repositories;
+package edu.java.api.repositories.jdbc;
 
+import edu.java.api.repositories.ChatsRepository;
 import edu.java.api.repositories.dto.ChatDTO;
 import java.sql.PreparedStatement;
 import java.sql.Statement;

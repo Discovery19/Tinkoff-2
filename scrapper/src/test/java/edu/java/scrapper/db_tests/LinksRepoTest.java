@@ -1,16 +1,13 @@
 package edu.java.scrapper.db_tests;
 
-import edu.java.api.repositories.JdbcLinksRepository;
+import edu.java.api.repositories.jdbc.JdbcLinksRepository;
 import edu.java.scrapper.IntegrationTest;
 import java.net.URI;
 import java.net.URISyntaxException;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import static org.junit.jupiter.api.Assertions.assertEquals;

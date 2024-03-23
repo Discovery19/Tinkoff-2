@@ -1,7 +1,7 @@
 package edu.java.api.service;
 
-import edu.java.api.repositories.JdbcLinksRepository;
 import edu.java.api.repositories.dto.LinkDTO;
+import edu.java.api.repositories.jdbc.JdbcLinksRepository;
 import edu.java.api.requests.LinkRequest;
 import edu.java.api.response.api_response.LinkResponse;
 import edu.java.api.response.api_response.ListLinksResponse;

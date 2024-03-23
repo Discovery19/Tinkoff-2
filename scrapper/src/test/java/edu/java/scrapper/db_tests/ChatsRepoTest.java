@@ -1,11 +1,8 @@
 package edu.java.scrapper.db_tests;
 
-import edu.java.api.repositories.JdbcChatsRepository;
-import edu.java.api.repositories.JdbcLinksRepository;
+import edu.java.api.repositories.jdbc.JdbcChatsRepository;
 import edu.java.api.repositories.dto.ChatDTO;
 import edu.java.scrapper.IntegrationTest;
-import java.net.URI;
-import java.net.URISyntaxException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,5 +1,6 @@
-package edu.java.api.repositories;
+package edu.java.api.repositories.jdbc;
 
+import edu.java.api.repositories.LinksRepository;
 import edu.java.api.repositories.dto.LinkDTO;
 import java.net.URI;
 import java.sql.PreparedStatement;
