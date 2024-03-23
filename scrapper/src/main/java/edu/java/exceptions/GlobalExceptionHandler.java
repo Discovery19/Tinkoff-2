@@ -1,8 +1,8 @@
 package edu.java.exceptions;
 
+import edu.java.response.ApiErrorResponse;
 import java.util.Arrays;
 import java.util.stream.Collectors;
-import edu.java.response.ApiErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -28,45 +28,48 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<ApiErrorResponse> handleException(BadRequestException e) {
-        return new ResponseEntity<>(new ApiErrorResponse(
-            HttpStatus.BAD_REQUEST.getReasonPhrase(),
-            Integer.toString(HttpStatus.BAD_REQUEST.value()),
-            e.getClass().getName(),
-            e.getMessage(),
-            Arrays.stream(e.getStackTrace())
-                .map(StackTraceElement::toString)
-                .collect(Collectors.toList())
-        ),
+        return new ResponseEntity<>(
+            new ApiErrorResponse(
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                Integer.toString(HttpStatus.BAD_REQUEST.value()),
+                e.getClass().getName(),
+                e.getMessage(),
+                Arrays.stream(e.getStackTrace())
+                    .map(StackTraceElement::toString)
+                    .collect(Collectors.toList())
+            ),
             HttpStatus.BAD_REQUEST
         );
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiErrorResponse> handleException(ResourceNotFoundException e) {
-        return new ResponseEntity<>(new ApiErrorResponse(
-            HttpStatus.NOT_FOUND.getReasonPhrase(),
-            Integer.toString(HttpStatus.NOT_FOUND.value()),
-            e.getClass().getName(),
-            e.getMessage(),
-            Arrays.stream(e.getStackTrace())
-                .map(StackTraceElement::toString)
-                .collect(Collectors.toList())
-        ),
+        return new ResponseEntity<>(
+            new ApiErrorResponse(
+                HttpStatus.NOT_FOUND.getReasonPhrase(),
+                Integer.toString(HttpStatus.NOT_FOUND.value()),
+                e.getClass().getName(),
+                e.getMessage(),
+                Arrays.stream(e.getStackTrace())
+                    .map(StackTraceElement::toString)
+                    .collect(Collectors.toList())
+            ),
             HttpStatus.NOT_FOUND
         );
     }
 
     @ExceptionHandler(UserAlreadyExistsException.class)
     public ResponseEntity<ApiErrorResponse> handleException(UserAlreadyExistsException e) {
-        return new ResponseEntity<>(new ApiErrorResponse(
-            HttpStatus.CONFLICT.getReasonPhrase(),
-            Integer.toString(HttpStatus.CONFLICT.value()),
-            e.getClass().getName(),
-            e.getMessage(),
-            Arrays.stream(e.getStackTrace())
-                .map(StackTraceElement::toString)
-                .collect(Collectors.toList())
-        ),
+        return new ResponseEntity<>(
+            new ApiErrorResponse(
+                HttpStatus.CONFLICT.getReasonPhrase(),
+                Integer.toString(HttpStatus.CONFLICT.value()),
+                e.getClass().getName(),
+                e.getMessage(),
+                Arrays.stream(e.getStackTrace())
+                    .map(StackTraceElement::toString)
+                    .collect(Collectors.toList())
+            ),
             HttpStatus.CONFLICT
         );
     }
