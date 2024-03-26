@@ -1,4 +1,4 @@
-package edu.scrapper.api.exceptions;
+package edu.java.scrapper.api.exceptions;
 
 public class ApiException extends Exception {
     public ApiException(String msg) {

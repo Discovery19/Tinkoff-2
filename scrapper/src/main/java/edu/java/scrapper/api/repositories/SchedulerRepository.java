@@ -1,4 +1,4 @@
-package edu.scrapper.api.repositories;
+package edu.java.scrapper.api.repositories;
 
 import java.net.URI;
 import java.time.OffsetDateTime;

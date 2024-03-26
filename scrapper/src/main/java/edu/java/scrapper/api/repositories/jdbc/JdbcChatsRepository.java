@@ -1,7 +1,7 @@
-package edu.scrapper.api.repositories.jdbc;
+package edu.java.scrapper.api.repositories.jdbc;
 
-import edu.scrapper.api.repositories.ChatsRepository;
-import edu.scrapper.api.repositories.dto.ChatDTO;
+import edu.java.scrapper.api.repositories.ChatsRepository;
+import edu.java.scrapper.api.repositories.dto.ChatDTO;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;

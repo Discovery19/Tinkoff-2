@@ -1,6 +1,6 @@
-package edu.scrapper.api.repositories.jdbc;
+package edu.java.scrapper.api.repositories.jdbc;
 
-import edu.scrapper.api.repositories.SchedulerRepository;
+import edu.java.scrapper.api.repositories.SchedulerRepository;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.List;

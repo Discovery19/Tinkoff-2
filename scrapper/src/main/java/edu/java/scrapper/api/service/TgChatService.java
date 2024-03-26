@@ -1,4 +1,4 @@
-package edu.scrapper.api.service;
+package edu.java.scrapper.api.service;
 
 import org.springframework.http.ResponseEntity;
 

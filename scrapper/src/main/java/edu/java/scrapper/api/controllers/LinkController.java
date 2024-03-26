@@ -1,9 +1,9 @@
-package edu.scrapper.api.controllers;
+package edu.java.scrapper.api.controllers;
 
-import edu.scrapper.api.requests.LinkRequest;
-import edu.scrapper.api.response.api_response.ApiErrorResponse;
-import edu.scrapper.api.response.api_response.LinkResponse;
-import edu.scrapper.api.response.api_response.ListLinksResponse;
+import edu.java.scrapper.api.response.api_response.ApiErrorResponse;
+import edu.java.scrapper.api.response.api_response.LinkResponse;
+import edu.java.scrapper.api.response.api_response.ListLinksResponse;
+import edu.java.scrapper.api.requests.LinkRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

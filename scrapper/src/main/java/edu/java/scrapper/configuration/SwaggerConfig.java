@@ -1,4 +1,4 @@
-package edu.scrapper.configuration;
+package edu.java.scrapper.configuration;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

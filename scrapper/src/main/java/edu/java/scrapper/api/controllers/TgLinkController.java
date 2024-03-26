@@ -1,9 +1,9 @@
-package edu.scrapper.api.controllers;
+package edu.java.scrapper.api.controllers;
 
-import edu.scrapper.api.requests.LinkRequest;
-import edu.scrapper.api.response.api_response.LinkResponse;
-import edu.scrapper.api.response.api_response.ListLinksResponse;
-import edu.scrapper.api.service.LinkService;
+import edu.java.scrapper.api.response.api_response.LinkResponse;
+import edu.java.scrapper.api.response.api_response.ListLinksResponse;
+import edu.java.scrapper.api.requests.LinkRequest;
+import edu.java.scrapper.api.service.LinkService;
 import java.net.URISyntaxException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

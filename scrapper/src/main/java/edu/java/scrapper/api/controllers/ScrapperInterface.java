@@ -1,4 +1,4 @@
-package edu.scrapper.api.controllers;
+package edu.java.scrapper.api.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

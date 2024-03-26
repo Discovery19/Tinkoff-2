@@ -1,7 +1,7 @@
-package edu.scrapper.api.repositories.jdbc;
+package edu.java.scrapper.api.repositories.jdbc;
 
-import edu.scrapper.api.repositories.LinksRepository;
-import edu.scrapper.api.repositories.dto.LinkDTO;
+import edu.java.scrapper.api.repositories.dto.LinkDTO;
+import edu.java.scrapper.api.repositories.LinksRepository;
 import java.net.URI;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
