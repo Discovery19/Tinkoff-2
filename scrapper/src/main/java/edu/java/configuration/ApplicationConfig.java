@@ -8,7 +8,6 @@ import java.time.Duration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.reactive.function.client.WebClient;
 
 @Validated
 @ConfigurationProperties(prefix = "app", ignoreUnknownFields = false)
@@ -16,7 +15,9 @@ public record ApplicationConfig(
 
     @NotNull
     @Bean
-    Scheduler scheduler
+    Scheduler scheduler,
+    @NotNull
+    BaseUrls baseUrls
 ) {
 
     private static final String GITHUB_BASE_URL = "https://api.github.com";
@@ -24,8 +25,8 @@ public record ApplicationConfig(
     private static final String BASE_URL = "http://local.host:8090";
 
     @Bean
-    public WebClient githubWebClient() {
-        return WebClient.builder().baseUrl(GITHUB_BASE_URL).build();
+    GitHubWebClient gitHubClient() {
+        return new GitHubWebClient(baseUrls.gitHubApi);
     }
 
     @Bean
@@ -44,6 +45,9 @@ public record ApplicationConfig(
     }
 
     public record Scheduler(boolean enable, @NotNull Duration interval, @NotNull Duration forceCheckDelay) {
+    }
+
+    public record BaseUrls(@NotNull String gitHubApi, @NotNull String stackOverflowApi) {
     }
 
 }

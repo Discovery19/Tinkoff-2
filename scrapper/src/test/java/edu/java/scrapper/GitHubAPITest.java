@@ -29,7 +29,7 @@ public class GitHubAPITest {
                     .withHeader("Content-Type", "application/json")
                     .withBody(Files.readAllBytes(
                             Path.of(Objects.requireNonNull(GitHubAPITest.class
-                                    .getResource("/GitHubResponseExample")
+                                    .getResource("/GitHubResponseExample.json")
                                 ).toURI()
                             )
                         )

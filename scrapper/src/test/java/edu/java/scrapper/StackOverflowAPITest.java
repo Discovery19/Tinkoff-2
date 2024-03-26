@@ -30,7 +30,7 @@ public class StackOverflowAPITest {
                     .withHeader("Content-Type", "application/json")
                     .withBody(Files.readAllBytes(
                             Path.of(Objects.requireNonNull(StackOverflowAPITest.class
-                                    .getResource("/StackOverflowResponseExample")
+                                    .getResource("/StackOverflowResponseExample.json")
                                 ).toURI()
                             )
                         )
