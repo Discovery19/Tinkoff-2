@@ -2,9 +2,9 @@ package edu.java.scrapper.api.service;
 
 import edu.java.scrapper.api.repositories.dto.LinkDTO;
 import edu.java.scrapper.api.repositories.jdbc.JdbcLinksRepository;
+import edu.java.scrapper.api.requests.LinkRequest;
 import edu.java.scrapper.api.response.api_response.LinkResponse;
 import edu.java.scrapper.api.response.api_response.ListLinksResponse;
-import edu.java.scrapper.api.requests.LinkRequest;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
