@@ -1,14 +1,15 @@
 package edu.java.scrapper;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import edu.java.client.gitHub.GitHubWebClient;
-import edu.java.response.RepositoryResponse;
+import edu.java.scrapper.client.github.GitHubWebClient;
+import edu.java.scrapper.response.RepositoryResponse;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.OffsetDateTime;
 import java.util.Objects;
+
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
@@ -20,8 +21,8 @@ public class GitHubAPITest {
     @Test
     public void gitHubClientTest() throws IOException, URISyntaxException {
         WireMockServer wireMockServer = new WireMockServer();
+        configureFor("localhost", 8081);
         wireMockServer.start();
-        configureFor("localhost", 8080);
         //given
         wireMockServer.stubFor(
             get(urlEqualTo("/repos/testUser/testRep"))

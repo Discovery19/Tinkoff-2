@@ -16,6 +16,7 @@ public class TgUserMessageProcessor implements UserMessageProcessor {
 
     @Autowired
     public TgUserMessageProcessor(Command... commands) {
+        log.info("processor start");
         this.commands = Arrays.stream(commands).toList();
     }
 
@@ -26,7 +27,9 @@ public class TgUserMessageProcessor implements UserMessageProcessor {
 
     @Override
     public SendMessage process(Update update) {
+        log.info("Processing");
         String messageText = update.message().text().trim();
+        log.info(messageText);
         if (messageText.startsWith("/")) {
             for (Command command : commands) {
                 log.info(command.command());

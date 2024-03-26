@@ -27,6 +27,7 @@ public class TgBot implements Bot {
 
     @Autowired
     public TgBot(ApplicationConfig applicationConfig, TgUserMessageProcessor messageProcessor) {
+        log.info("Starting bot");
         this.bot = new TelegramBot(applicationConfig.telegramToken());
         this.messageProcessor = messageProcessor;
         createMenu();
@@ -63,7 +64,6 @@ public class TgBot implements Bot {
         });
     }
 
-    //TODO
     public void createMenu() {
         List<BotCommand> listOfCommands = new ArrayList<>();
         for (Command command : messageProcessor.commands()
@@ -75,7 +75,6 @@ public class TgBot implements Bot {
         this.execute(new SetMyCommands(commandsArray));
     }
 
-    //
     @Override
     public void close() {
         bot.shutdown();
