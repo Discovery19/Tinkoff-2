@@ -1,5 +1,6 @@
 package edu.java.bot.client;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.java.bot.responses.LinkResponse;
 import edu.java.bot.responses.ListLinkResponse;
 import java.net.URI;
@@ -43,7 +44,7 @@ public class ScrapperAPIClient {
         return webClient.post()
             .uri(TG_CHAT_URI + LINKS_URI, chatId)
             .contentType(MediaType.APPLICATION_JSON)
-            .body(BodyInserters.fromValue(link))
+            .body(BodyInserters.fromValue(new LinkRequest(link.toString())))
             .retrieve()
             .toEntity(LinkResponse.class)
             .block();
@@ -61,10 +62,14 @@ public class ScrapperAPIClient {
         return webClient.method(HttpMethod.DELETE)
             .uri(TG_CHAT_URI + LINKS_URI, chatId)
             .contentType(MediaType.APPLICATION_JSON)
-            .body(BodyInserters.fromValue(link))
+            .body(BodyInserters.fromValue(new LinkRequest(link.toString())))
             .retrieve()
             .toEntity(LinkResponse.class)
             .block();
+    }
+
+    private record LinkRequest(@JsonProperty("link") String link) {
+
     }
 
 }

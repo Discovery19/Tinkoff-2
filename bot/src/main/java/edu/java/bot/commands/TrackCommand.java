@@ -2,11 +2,15 @@ package edu.java.bot.commands;
 
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
-import edu.java.bot.service.MyDataBase;
+import edu.java.bot.client.ScrapperAPIClient;
+import java.net.URI;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class TrackCommand implements Command, Tracking {
+    private final ScrapperAPIClient scrapperAPIClient;
 
     @Override
     public String command() {
@@ -25,11 +29,12 @@ public class TrackCommand implements Command, Tracking {
     }
 
     @Override
-    public String linkOperation(Long chatId, String link) {
-        return flagsOperation(MyDataBase.add(chatId, link));
+    public String linkOperation(Long chatId, URI link) {
+        if (!link.toString().isBlank()) {
+            scrapperAPIClient.trackLink(chatId, link);
+        }
+        return goodAnswer();
     }
-
-
 
     @Override
     public String goodAnswer() {

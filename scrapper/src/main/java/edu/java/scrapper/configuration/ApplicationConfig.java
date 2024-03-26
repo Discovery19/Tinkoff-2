@@ -1,6 +1,6 @@
 package edu.java.scrapper.configuration;
 
-import edu.java.scrapper.client.BotAPIClient;
+import edu.java.scrapper.bot_api.client.BotAPIClient;
 import edu.java.scrapper.client.github.GitHubWebClient;
 import edu.java.scrapper.client.stackoverflow.StackOverflowWebClient;
 import jakarta.validation.constraints.NotNull;
@@ -15,18 +15,16 @@ public record ApplicationConfig(
 
     @NotNull
     @Bean
-    Scheduler scheduler,
-    @NotNull
-    BaseUrls baseUrls
+    Scheduler scheduler
 ) {
 
     private static final String GITHUB_BASE_URL = "https://api.github.com";
     private static final String STACKOVERFLOW_BASE_URL = "https://api.stackexchange.com";
-    private static final String BASE_URL = "http://local.host:8090";
+    private static final String BASE_URL = "http://localhost:8090";
 
     @Bean
     GitHubWebClient gitHubClient() {
-        return new GitHubWebClient(baseUrls.gitHubApi);
+        return new GitHubWebClient(GITHUB_BASE_URL);
     }
 
     @Bean
@@ -39,10 +37,10 @@ public record ApplicationConfig(
         return new BotAPIClient(BASE_URL);
     }
 
-    public record Scheduler(boolean enable, @NotNull Duration interval, @NotNull Duration forceCheckDelay) {
-    }
-
-    public record BaseUrls(@NotNull String gitHubApi, @NotNull String stackOverflowApi) {
+    public record Scheduler(boolean enable,
+                            @NotNull Duration interval,
+                            @NotNull Duration forceCheckDelay,
+                            @NotNull Duration linkCheckingFrequency) {
     }
 
 }
