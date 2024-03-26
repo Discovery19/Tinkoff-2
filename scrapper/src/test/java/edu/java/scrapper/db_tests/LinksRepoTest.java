@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-public class LinksRepoTest extends IntegrationTest {
+class LinksRepoTest extends IntegrationTest {
     @Autowired
     private JdbcLinksRepository linksRepository;
     @Autowired

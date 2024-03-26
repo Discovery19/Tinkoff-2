@@ -68,5 +68,4 @@ public class LinkUpdaterScheduler {
             default -> throw new ResourceNotFoundException("Unknown resource");
         }
     }
-
 }

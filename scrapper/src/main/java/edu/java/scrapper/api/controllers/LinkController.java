@@ -1,9 +1,9 @@
 package edu.java.scrapper.api.controllers;
 
+import edu.java.scrapper.api.requests.LinkRequest;
 import edu.java.scrapper.api.response.api_response.ApiErrorResponse;
 import edu.java.scrapper.api.response.api_response.LinkResponse;
 import edu.java.scrapper.api.response.api_response.ListLinksResponse;
-import edu.java.scrapper.api.requests.LinkRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -47,7 +47,7 @@ public interface LinkController {
 
     @PostMapping("/tg-chat/{id}/links")
     ResponseEntity<LinkResponse> trackLink(
-            @PathVariable Long id, @RequestBody LinkRequest dto)
+        @PathVariable Long id, @RequestBody LinkRequest dto)
         throws URISyntaxException;
 
     @Operation(summary = "Убрать отслеживание ссылки")
