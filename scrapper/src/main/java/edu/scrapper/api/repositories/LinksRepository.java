@@ -1,6 +1,6 @@
-package edu.java.api.repositories;
+package edu.scrapper.api.repositories;
 
-import edu.java.api.repositories.dto.LinkDTO;
+import edu.scrapper.api.repositories.dto.LinkDTO;
 import java.net.URI;
 import java.util.List;
 

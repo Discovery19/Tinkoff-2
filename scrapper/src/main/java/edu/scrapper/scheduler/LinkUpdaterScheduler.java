@@ -1,13 +1,13 @@
-package edu.java.scheduler;
+package edu.scrapper.scheduler;
 
-import edu.java.api.repositories.SchedulerRepository;
-import edu.java.api.response.client_response.QuestionResponse;
-import edu.java.api.response.client_response.RepositoryResponse;
-import edu.java.bot_api.client.BotAPIClient;
-import edu.java.bot_api.request.BotRequest;
-import edu.java.client.github.GitHubClient;
-import edu.java.client.stackoverflow.StackOverflowClient;
-import edu.java.configuration.ApplicationConfig;
+import edu.scrapper.api.repositories.SchedulerRepository;
+import edu.scrapper.api.response.client_response.QuestionResponse;
+import edu.scrapper.api.response.client_response.RepositoryResponse;
+import edu.scrapper.bot_api.client.BotAPIClient;
+import edu.scrapper.bot_api.request.BotRequest;
+import edu.scrapper.client.github.GitHubClient;
+import edu.scrapper.client.stackoverflow.StackOverflowClient;
+import edu.scrapper.configuration.ApplicationConfig;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.List;

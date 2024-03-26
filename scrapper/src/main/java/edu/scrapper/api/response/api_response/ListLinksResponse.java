@@ -1,4 +1,4 @@
-package edu.java.api.response.api_response;
+package edu.scrapper.api.response.api_response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.List;

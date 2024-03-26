@@ -1,6 +1,6 @@
-package edu.java.api.service;
+package edu.scrapper.api.service;
 
-import edu.java.api.repositories.jdbc.JdbcChatsRepository;
+import edu.scrapper.api.repositories.jdbc.JdbcChatsRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

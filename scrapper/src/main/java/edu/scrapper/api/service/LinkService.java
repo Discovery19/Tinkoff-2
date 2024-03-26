@@ -1,8 +1,8 @@
-package edu.java.api.service;
+package edu.scrapper.api.service;
 
-import edu.java.api.requests.LinkRequest;
-import edu.java.api.response.api_response.LinkResponse;
-import edu.java.api.response.api_response.ListLinksResponse;
+import edu.scrapper.api.requests.LinkRequest;
+import edu.scrapper.api.response.api_response.LinkResponse;
+import edu.scrapper.api.response.api_response.ListLinksResponse;
 import java.net.URISyntaxException;
 import org.springframework.http.ResponseEntity;
 

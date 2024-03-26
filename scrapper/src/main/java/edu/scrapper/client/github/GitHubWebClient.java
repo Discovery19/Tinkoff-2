@@ -1,6 +1,6 @@
-package edu.java.client.github;
+package edu.scrapper.client.github;
 
-import edu.java.api.response.client_response.RepositoryResponse;
+import edu.scrapper.api.response.client_response.RepositoryResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 

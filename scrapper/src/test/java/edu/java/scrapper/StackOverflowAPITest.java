@@ -1,8 +1,8 @@
 package edu.java.scrapper;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import edu.java.client.stackoverflow.StackOverflowWebClient;
-import edu.java.api.response.client_response.QuestionResponse;
+import edu.scrapper.client.stackoverflow.StackOverflowWebClient;
+import edu.scrapper.api.response.client_response.QuestionResponse;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;

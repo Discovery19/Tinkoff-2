@@ -1,8 +1,8 @@
-package edu.java.configuration;
+package edu.scrapper.configuration;
 
-import edu.java.bot_api.client.BotAPIClient;
-import edu.java.client.github.GitHubWebClient;
-import edu.java.client.stackoverflow.StackOverflowWebClient;
+import edu.scrapper.bot_api.client.BotAPIClient;
+import edu.scrapper.client.github.GitHubWebClient;
+import edu.scrapper.client.stackoverflow.StackOverflowWebClient;
 import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 import org.springframework.boot.context.properties.ConfigurationProperties;

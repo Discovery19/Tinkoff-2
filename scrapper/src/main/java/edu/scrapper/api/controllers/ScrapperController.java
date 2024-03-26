@@ -1,6 +1,6 @@
-package edu.java.api.controllers;
+package edu.scrapper.api.controllers;
 
-import edu.java.api.service.TgChatService;
+import edu.scrapper.api.service.TgChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,10 +1,10 @@
-package edu.java.api.service;
+package edu.scrapper.api.service;
 
-import edu.java.api.repositories.dto.LinkDTO;
-import edu.java.api.repositories.jdbc.JdbcLinksRepository;
-import edu.java.api.requests.LinkRequest;
-import edu.java.api.response.api_response.LinkResponse;
-import edu.java.api.response.api_response.ListLinksResponse;
+import edu.scrapper.api.repositories.dto.LinkDTO;
+import edu.scrapper.api.repositories.jdbc.JdbcLinksRepository;
+import edu.scrapper.api.requests.LinkRequest;
+import edu.scrapper.api.response.api_response.LinkResponse;
+import edu.scrapper.api.response.api_response.ListLinksResponse;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;

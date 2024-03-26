@@ -1,7 +1,7 @@
-package edu.java.bot_api.client;
+package edu.scrapper.bot_api.client;
 
-import edu.java.bot_api.request.BotRequest;
-import edu.java.bot_api.response.BotResponse;
+import edu.scrapper.bot_api.request.BotRequest;
+import edu.scrapper.bot_api.response.BotResponse;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.BodyInserters;

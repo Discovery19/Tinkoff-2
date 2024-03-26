@@ -1,6 +1,6 @@
-package edu.java.api.repositories;
+package edu.scrapper.api.repositories;
 
-import edu.java.api.repositories.dto.ChatDTO;
+import edu.scrapper.api.repositories.dto.ChatDTO;
 import java.util.List;
 
 public interface ChatsRepository {

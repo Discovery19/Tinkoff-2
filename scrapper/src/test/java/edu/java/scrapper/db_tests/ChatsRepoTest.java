@@ -1,7 +1,7 @@
 package edu.java.scrapper.db_tests;
 
-import edu.java.api.repositories.jdbc.JdbcChatsRepository;
-import edu.java.api.repositories.dto.ChatDTO;
+import edu.scrapper.api.repositories.jdbc.JdbcChatsRepository;
+import edu.scrapper.api.repositories.dto.ChatDTO;
 import edu.java.scrapper.IntegrationTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
