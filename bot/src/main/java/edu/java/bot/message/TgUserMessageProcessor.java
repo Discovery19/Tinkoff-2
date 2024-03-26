@@ -30,7 +30,6 @@ public class TgUserMessageProcessor implements UserMessageProcessor {
         log.info("Processing");
         String messageText = update.message().text().trim();
         log.info(messageText);
-        String messageText = update.message().text().trim();
         if (messageText.startsWith("/")) {
             for (Command command : commands) {
                 log.info(command.command());

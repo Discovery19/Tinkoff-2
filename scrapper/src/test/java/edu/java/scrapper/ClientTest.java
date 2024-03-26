@@ -1,9 +1,9 @@
 package edu.java.scrapper;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import edu.java.client.BotAPIClient;
-import edu.java.requests.BotRequest;
-import edu.java.response.BotResponse;
+import edu.java.scrapper.client.BotAPIClient;
+import edu.java.scrapper.requests.BotRequest;
+import edu.java.scrapper.response.BotResponse;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class ClientTest {
 
     @Before
     public void setup() {
-        wireMockServer = new WireMockServer(8080);
+        wireMockServer = new WireMockServer(8082);
         wireMockServer.start();
     }
 
@@ -46,7 +46,7 @@ public class ClientTest {
                         "}")
                 )
         );
-        BotAPIClient client = new BotAPIClient("http://localhost:8080");
+        BotAPIClient client = new BotAPIClient("http://localhost:8082");
         //when
         BotResponse response =
             client.sendUpdate(new BotRequest(1L, new URI("link.com"), "link", List.of(1L))).getBody();
