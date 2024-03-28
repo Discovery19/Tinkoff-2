@@ -1,6 +1,6 @@
 package edu.java.scrapper.jooq;
 
-import edu.java.api.service.TgChatService;
+import edu.java.scrapper.api.service.TgChatService;
 import edu.java.scrapper.IntegrationTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

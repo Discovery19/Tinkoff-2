@@ -1,9 +1,9 @@
 package edu.java.scrapper.jooq;
 
-import edu.java.api.requests.LinkRequest;
-import edu.java.api.response.api_response.LinkResponse;
-import edu.java.api.response.api_response.ListLinksResponse;
-import edu.java.api.service.LinkService;
+import edu.java.scrapper.api.requests.LinkRequest;
+import edu.java.scrapper.api.response.api_response.LinkResponse;
+import edu.java.scrapper.api.response.api_response.ListLinksResponse;
+import edu.java.scrapper.api.service.LinkService;
 import edu.java.scrapper.IntegrationTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
