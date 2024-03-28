@@ -18,10 +18,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Slf4j
-public class JdbcLinksRepository implements LinksRepository {
+public class JdbcLinkRepository implements LinksRepository {
     private final JdbcTemplate jdbcTemplate;
 
-    public JdbcLinksRepository(JdbcTemplate jdbcTemplate) {
+    public JdbcLinkRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 

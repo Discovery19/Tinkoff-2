@@ -1,4 +1,5 @@
 app:
+  database-access-type: jpa
   scheduler:
     enable: true
     interval: 10s
@@ -12,7 +13,10 @@ base-urls:
 spring:
   application:
     name: scrapper
-
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
   datasource:
     url: jdbc:postgresql://localhost:5432/scrapper
     username: postgres

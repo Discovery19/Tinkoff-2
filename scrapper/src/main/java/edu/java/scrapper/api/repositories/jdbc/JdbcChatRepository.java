@@ -16,10 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Slf4j
-public class JdbcChatsRepository implements ChatsRepository {
+public class JdbcChatRepository implements ChatsRepository {
     private final JdbcTemplate jdbcTemplate;
 
-    public JdbcChatsRepository(JdbcTemplate jdbcTemplate) {
+    public JdbcChatRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
