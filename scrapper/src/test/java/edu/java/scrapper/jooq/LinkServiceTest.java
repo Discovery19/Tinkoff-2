@@ -1,10 +1,9 @@
 package edu.java.scrapper.jooq;
 
-import edu.java.api.requests.LinkRequest;
-import edu.java.api.response.api_response.LinkResponse;
-import edu.java.api.response.api_response.ListLinksResponse;
-import edu.java.api.service.LinkService;
-import edu.java.api.service.jooq.JooqLinkService;
+import edu.java.scrapper.api.requests.LinkRequest;
+import edu.java.scrapper.api.response.api_response.LinkResponse;
+import edu.java.scrapper.api.response.api_response.ListLinksResponse;
+import edu.java.scrapper.api.service.LinkService;
 import edu.java.scrapper.IntegrationTest;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -50,7 +49,6 @@ class LinkServiceTest extends IntegrationTest {
         );
     }
 
-
     @Test
     @Transactional
     @Rollback
@@ -67,7 +65,8 @@ class LinkServiceTest extends IntegrationTest {
         assertEquals(
             new ListLinksResponse(List.of(
                 new LinkResponse(1L, URI.create(EXAMPLE_URL)),
-                new LinkResponse(2L, URI.create(EXAMPLE2_URL)))),
+                new LinkResponse(2L, URI.create(EXAMPLE2_URL))
+            )),
             listResponse.getBody()
         );
     }
@@ -80,7 +79,6 @@ class LinkServiceTest extends IntegrationTest {
 
         Assertions.assertTrue(Objects.requireNonNull(service.getLinks(123L).getBody()).links().isEmpty());
     }
-
 
     @Test
     @Transactional
@@ -123,6 +121,5 @@ class LinkServiceTest extends IntegrationTest {
             )
         );
     }
-
 
 }

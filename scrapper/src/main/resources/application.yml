@@ -6,6 +6,10 @@ app:
     force-check-delay: 10s
     link-checking-frequency: 2m
 
+base-urls:
+  git-hub-api: https://api.github.com/
+  stack-overflow-api: https://api.stackexchange.com/
+
 spring:
   application:
     name: scrapper

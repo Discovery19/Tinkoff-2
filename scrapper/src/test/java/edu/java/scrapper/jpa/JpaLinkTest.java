@@ -1,8 +1,8 @@
 package edu.java.scrapper.jpa;
 
-import edu.java.api.repositories.jdbc.JdbcLinkRepository;
-import edu.java.api.requests.LinkRequest;
-import edu.java.api.service.LinkService;
+import edu.java.scrapper.api.repositories.jdbc.JdbcLinkRepository;
+import edu.java.scrapper.api.requests.LinkRequest;
+import edu.java.scrapper.api.service.LinkService;
 import edu.java.scrapper.IntegrationTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

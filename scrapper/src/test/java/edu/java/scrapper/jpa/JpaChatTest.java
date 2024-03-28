@@ -1,11 +1,10 @@
 package edu.java.scrapper.jpa;
 
-import edu.java.api.service.TgChatService;
 import edu.java.scrapper.IntegrationTest;
+import edu.java.scrapper.api.service.TgChatService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.Rollback;
