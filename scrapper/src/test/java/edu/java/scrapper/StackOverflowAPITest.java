@@ -1,8 +1,8 @@
 package edu.java.scrapper;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import edu.java.client.stackoverflow.StackOverflowWebClient;
-import edu.java.api.response.client_response.QuestionResponse;
+import edu.java.scrapper.client.stackoverflow.StackOverflowWebClient;
+import edu.java.scrapper.api.response.client_response.QuestionResponse;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Objects;
+
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
@@ -30,7 +31,7 @@ public class StackOverflowAPITest {
                     .withHeader("Content-Type", "application/json")
                     .withBody(Files.readAllBytes(
                             Path.of(Objects.requireNonNull(StackOverflowAPITest.class
-                                    .getResource("/StackOverflowResponseExample")
+                                    .getResource("/StackOverflowResponseExample.json")
                                 ).toURI()
                             )
                         )
