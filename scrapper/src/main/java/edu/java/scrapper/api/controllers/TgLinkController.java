@@ -5,14 +5,17 @@ import edu.java.scrapper.api.response.api_response.LinkResponse;
 import edu.java.scrapper.api.response.api_response.ListLinksResponse;
 import edu.java.scrapper.api.service.LinkService;
 import java.net.URISyntaxException;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequiredArgsConstructor
 public class TgLinkController implements LinkController {
     private final LinkService linkService;
+
+    public TgLinkController(@Qualifier("jooqLinkService") LinkService linkService) {
+        this.linkService = linkService;
+    }
 
     @Override
     public ResponseEntity<ListLinksResponse> getLinks(Long id) throws URISyntaxException {

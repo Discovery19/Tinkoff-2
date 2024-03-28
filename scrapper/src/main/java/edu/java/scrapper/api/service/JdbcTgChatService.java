@@ -4,7 +4,7 @@ import edu.java.scrapper.api.repositories.jdbc.JdbcChatsRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("jdbcChatService")
 public class JdbcTgChatService implements TgChatService {
     private final JdbcChatsRepository jdbcChatsRepository;
 

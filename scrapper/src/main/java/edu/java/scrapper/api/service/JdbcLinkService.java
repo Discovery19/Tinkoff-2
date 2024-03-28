@@ -12,7 +12,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("jdbcLinkService")
 public class JdbcLinkService implements LinkService {
     private final JdbcLinksRepository jdbcLinksRepository;
 
