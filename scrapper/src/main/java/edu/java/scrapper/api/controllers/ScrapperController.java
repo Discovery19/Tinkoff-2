@@ -1,7 +1,7 @@
 package edu.java.scrapper.api.controllers;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import edu.java.scrapper.api.service.TgChatService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 

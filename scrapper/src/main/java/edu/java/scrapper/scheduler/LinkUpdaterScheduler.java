@@ -105,6 +105,7 @@ public class LinkUpdaterScheduler {
             }
         }
     }
+
     private String[] parseGitHubUrl(String url) {
         String pattern = "https://github.com/(\\w+)/([^/]+)";
         Pattern r = Pattern.compile(pattern);
