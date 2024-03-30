@@ -1,6 +1,6 @@
 package edu.java.scrapper.db_tests;
 
-import edu.java.scrapper.api.repositories.jdbc.JdbcChatsRepository;
+import edu.java.scrapper.api.repositories.jdbc.JdbcChatRepository;
 import edu.java.scrapper.api.repositories.dto.ChatDTO;
 import edu.java.scrapper.IntegrationTest;
 import org.junit.jupiter.api.Test;
@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-public class ChatsRepoTest extends IntegrationTest {
+class ChatsRepoTest extends IntegrationTest {
 
     @Autowired
-    private JdbcChatsRepository chatRepository;
+    private JdbcChatRepository chatRepository;
     @Autowired
     JdbcTemplate jdbcTemplate;
 

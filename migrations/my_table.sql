@@ -6,7 +6,9 @@ create table links (
     url text NOT NULL,
     description text,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    last_checked TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    last_checked TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    open_issues int,
+    answer_count int
 );
 create table chats (
     id bigint primary key

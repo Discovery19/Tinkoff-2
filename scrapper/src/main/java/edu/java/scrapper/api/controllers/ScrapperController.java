@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 public class ScrapperController implements ScrapperInterface {
+
     private final TgChatService tgChatService;
 
     @Override
@@ -19,7 +20,5 @@ public class ScrapperController implements ScrapperInterface {
     public ResponseEntity<Long> deleteChat(Long id) {
         return tgChatService.deleteChat(id);
     }
-
-
 
 }
