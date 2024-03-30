@@ -33,7 +33,7 @@ public class ContainerTest extends IntegrationTest{
         assertTrue(rs.next());
         rs.close();
 
-        POSTGRES.stop();
+        //POSTGRES.stop();
     }
 }
 

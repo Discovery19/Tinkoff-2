@@ -5,7 +5,10 @@ app:
     interval: 10s
     force-check-delay: 10s
     link-checking-frequency: 2m
-
+  retry-config:
+    backoff: constant
+    attempts: 3
+    timeout: 5
 base-urls:
   git-hub-api: https://api.github.com/
   stack-overflow-api: https://api.stackexchange.com/
@@ -35,3 +38,9 @@ server:
 
 logging:
   config: classpath:log4j2-plain.xml
+rate:
+  limit: 10
+time:
+  duration:
+    in:
+      minutes: 1
