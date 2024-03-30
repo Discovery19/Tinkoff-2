@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class MyTest extends IntegrationTest{
+public class ContainerTest extends IntegrationTest{
     @Test
     public void testContainerStartupAndMigration() throws SQLException {
         //проверка запуска контейнера
@@ -33,7 +33,7 @@ public class MyTest extends IntegrationTest{
         assertTrue(rs.next());
         rs.close();
 
-        POSTGRES.stop();
+        //POSTGRES.stop();
     }
 }
 

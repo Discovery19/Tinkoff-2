@@ -1,10 +1,14 @@
 app:
+  database-access-type: jpa
   scheduler:
     enable: true
     interval: 10s
     force-check-delay: 10s
     link-checking-frequency: 2m
-
+  retry-config:
+    backoff: constant
+    attempts: 3
+    timeout: 5
 base-urls:
   git-hub-api: https://api.github.com/
   stack-overflow-api: https://api.stackexchange.com/
@@ -12,7 +16,10 @@ base-urls:
 spring:
   application:
     name: scrapper
-
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
   datasource:
     url: jdbc:postgresql://localhost:5432/scrapper
     username: postgres
@@ -31,3 +38,9 @@ server:
 
 logging:
   config: classpath:log4j2-plain.xml
+rate:
+  limit: 10
+time:
+  duration:
+    in:
+      minutes: 1
