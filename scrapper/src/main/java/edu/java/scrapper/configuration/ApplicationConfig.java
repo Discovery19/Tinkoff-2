@@ -15,7 +15,9 @@ public record ApplicationConfig(
 
     @NotNull
     @Bean
-    Scheduler scheduler
+    Scheduler scheduler,
+    @NotNull
+    AccessType databaseAccessType
 ) {
 
     private static final String GITHUB_BASE_URL = "https://api.github.com";
@@ -41,6 +43,10 @@ public record ApplicationConfig(
                             @NotNull Duration interval,
                             @NotNull Duration forceCheckDelay,
                             @NotNull Duration linkCheckingFrequency) {
+    }
+
+    public enum AccessType {
+        JDBC, JPA, JOOQ
     }
 
 }

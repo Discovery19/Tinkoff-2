@@ -6,11 +6,9 @@ import edu.java.scrapper.domain.jooq.tables.LinkChat;
 import edu.java.scrapper.domain.jooq.tables.Links;
 import org.jooq.DSLContext;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import static org.jooq.impl.DSL.selectOne;
 
-@Service("jooqChatService")
 public class JooqChatService implements TgChatService {
 
     private final DSLContext dslContext;
@@ -25,13 +23,9 @@ public class JooqChatService implements TgChatService {
 
     @Override
     public ResponseEntity<Long> registerChat(Long id) {
-//        try {
         dslContext.insertInto(chat)
             .set(chat.ID, id)
             .execute();
-//        } catch (DuplicateKeyException e) {
-//            throw new UserAlreadyExistsException("User already exists");
-//        }
         return null;
     }
 
@@ -51,14 +45,9 @@ public class JooqChatService implements TgChatService {
                     )
             )
             .execute();
-
-        int deleted = dslContext.deleteFrom(chat)
+        Long deleted = (long) dslContext.deleteFrom(chat)
             .where(chat.ID.eq(id))
             .execute();
-
-//        if (deleted == 0) {
-//            throw new ResourceNotFoundException("User not found");
-//        }
-        return null;
+        return ResponseEntity.ok(deleted);
     }
 }

@@ -1,14 +1,13 @@
-package edu.java.scrapper.api.service;
+package edu.java.scrapper.api.service.jdbc;
 
-import edu.java.scrapper.api.repositories.jdbc.JdbcChatsRepository;
+import edu.java.scrapper.api.repositories.jdbc.JdbcChatRepository;
+import edu.java.scrapper.api.service.TgChatService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 
-@Service("jdbcChatService")
-public class JdbcTgChatService implements TgChatService {
-    private final JdbcChatsRepository jdbcChatsRepository;
+public class JdbcChatService implements TgChatService {
+    private final JdbcChatRepository jdbcChatsRepository;
 
-    public JdbcTgChatService(JdbcChatsRepository tg) {
+    public JdbcChatService(JdbcChatRepository tg) {
         this.jdbcChatsRepository = tg;
     }
 

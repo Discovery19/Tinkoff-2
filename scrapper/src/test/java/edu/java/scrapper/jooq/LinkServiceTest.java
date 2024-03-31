@@ -22,7 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class LinkServiceTest extends IntegrationTest {
     @Autowired
-    @Qualifier("jooqLinkService")
     LinkService service;
 
     @Autowired
@@ -50,7 +49,6 @@ class LinkServiceTest extends IntegrationTest {
         );
     }
 
-
     @Test
     @Transactional
     @Rollback
@@ -67,7 +65,8 @@ class LinkServiceTest extends IntegrationTest {
         assertEquals(
             new ListLinksResponse(List.of(
                 new LinkResponse(1L, URI.create(EXAMPLE_URL)),
-                new LinkResponse(2L, URI.create(EXAMPLE2_URL)))),
+                new LinkResponse(2L, URI.create(EXAMPLE2_URL))
+            )),
             listResponse.getBody()
         );
     }
@@ -80,7 +79,6 @@ class LinkServiceTest extends IntegrationTest {
 
         Assertions.assertTrue(Objects.requireNonNull(service.getLinks(123L).getBody()).links().isEmpty());
     }
-
 
     @Test
     @Transactional
@@ -123,6 +121,5 @@ class LinkServiceTest extends IntegrationTest {
             )
         );
     }
-
 
 }
