@@ -4,29 +4,30 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 import edu.java.scrapper.bot_api.client.BotAPIClient;
 import edu.java.scrapper.bot_api.request.BotRequest;
 import edu.java.scrapper.bot_api.response.BotResponse;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+import edu.java.scrapper.configuration.ApplicationConfig;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 
 public class ClientTest {
-    private WireMockServer wireMockServer;
+    static WireMockServer wireMockServer;
 
-    @Before
-    public void setup() {
-        wireMockServer = new WireMockServer(8082);
+    @BeforeAll
+    static void configureWireMock() {
+        wireMockServer = new WireMockServer(6060);
         wireMockServer.start();
     }
 
-    @After
-    public void tearDown() {
-        wireMockServer.stop();
+    @AfterAll
+    static void tearDownWireMock() {
+        wireMockServer.shutdown();
     }
 
     @Test
@@ -46,7 +47,8 @@ public class ClientTest {
                         "}")
                 )
         );
-        BotAPIClient client = new BotAPIClient("http://localhost:8082");
+        BotAPIClient client = new BotAPIClient("http://localhost:6060", new ApplicationConfig.RetryConfig(
+            ApplicationConfig.BackOff.CONSTANT, 1, 1));
         //when
         BotResponse response =
             client.sendUpdate(new BotRequest(1L, new URI("link.com"), "link", List.of(1L))).getBody();
