@@ -16,4 +16,12 @@ public interface SchedulerRepository {
     void updateUpdatedAt(URI url, OffsetDateTime time);
 
     List<Long> getSubscribedChats(Long linkId);
+
+    Integer checkGitColumn(URI url);
+
+    void insertGitColumn(URI url, int openIssues);
+
+    Integer checkStackColumn(URI url);
+
+    void insertStackColumn(URI url, int answerCount);
 }

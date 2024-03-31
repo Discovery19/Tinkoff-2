@@ -43,11 +43,25 @@
         <!-- Linters -->
         <maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
         <checkstyle.version>10.12.7</checkstyle.version>
+
+
+        <spring-starter-jooq.version>3.2.1</spring-starter-jooq.version>
+
+        <!-- Jooq -->
+        <jooq-codegen.version>3.18.7</jooq-codegen.version>
+        <jooq-liquibase.version>3.19.6</jooq-liquibase.version>
+
+        <!-- Liquibase -->
+        <liquibase-core.version>4.26.0</liquibase-core.version>
     </properties>
+
+
+
 
     <modules>
         <module>bot</module>
         <module>scrapper</module>
+        <module>scrapper-jooq</module>
     </modules>
 
     <dependencyManagement>
@@ -263,6 +277,11 @@
                             </goals>
                         </execution>
                     </executions>
+                    <configuration>
+                        <excludes>
+                            <exclude>**/edu/java/scrapper/domain/jooq/*</exclude>
+                        </excludes>
+                    </configuration>
                 </plugin>
 
                 <!-- Checkers -->

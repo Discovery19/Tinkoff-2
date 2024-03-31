@@ -44,7 +44,7 @@ public class GitHubAPITest {
         Assertions.assertEquals(
             new RepositoryResponse(
                 OffsetDateTime.parse("2024-02-16T19:40:25Z")
-                , "https://github.com/Discovery19/Tinkoff-2"
+                , "https://github.com/Discovery19/Tinkoff-2", 1
             ), gitHubResponse
 
         );
