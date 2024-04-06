@@ -8,6 +8,7 @@ import edu.java.scrapper.bot_api.request.BotRequest;
 import edu.java.scrapper.client.github.GitHubClient;
 import edu.java.scrapper.client.stackoverflow.StackOverflowClient;
 import edu.java.scrapper.configuration.ApplicationConfig;
+import edu.java.scrapper.kafka.NotificationService;
 import java.net.URI;
 import java.time.OffsetDateTime;
 import java.util.Arrays;
@@ -31,6 +32,7 @@ public class LinkUpdaterScheduler {
     private final GitHubClient gitHubClient;
     private final StackOverflowClient stackOverflowClient;
     private final SchedulerRepository repository;
+    private final NotificationService notificationService;
 
     @Scheduled(fixedDelayString = "#{@scheduler.interval()}")
     public void update() {
@@ -43,12 +45,12 @@ public class LinkUpdaterScheduler {
             linksRepository.updateCheckedAt(url, OffsetDateTime.now());
             if (newUpdate.isAfter(lastUpdate)) {
                 var id = linksRepository.getIdByLink(url);
-                botAPIClient
-                    .sendUpdate(
-                        new BotRequest(id, url,
-                            whatHappens(url),
-                            linksRepository.getSubscribedChats(id)
-                        ));
+                log.info("send notification");
+                notificationService
+                    .sendNotification(new BotRequest(id, url,
+                        whatHappens(url),
+                        linksRepository.getSubscribedChats(id)
+                    ));
                 linksRepository.updateUpdatedAt(url, newUpdate);
             }
         }

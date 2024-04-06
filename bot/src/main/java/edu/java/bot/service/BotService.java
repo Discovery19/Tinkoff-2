@@ -16,6 +16,7 @@ public class BotService {
     }
 
     public ResponseEntity<BotResponse> update(BotRequest botRequest) {
+
         List<Long> usersToWrite = botRequest.tgChatsIds();
         for (Long userId : usersToWrite) {
             tgBot.execute(new SendMessage(userId, botRequest.description() + "\n" + botRequest.link().toString()));

@@ -1,12 +1,16 @@
 app:
   telegram-token: ${TOKEN}
-
+  scrapper-topic: link-topic
+  bootstrap-servers: localhost:9092
 spring:
   application:
     name: bot
   jackson:
     time-zone: UTC
-
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: links
 server:
   port: 8090
 

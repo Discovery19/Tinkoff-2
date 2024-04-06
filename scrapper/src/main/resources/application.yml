@@ -9,11 +9,20 @@ app:
     backoff: constant
     attempts: 3
     timeout: 5
+# kafka
+  useQueue: true
+  bootstrap-server: localhost:9092
+  topic: link-topic
+
 base-urls:
   git-hub-api: https://api.github.com/
   stack-overflow-api: https://api.stackexchange.com/
 
 spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+#    template:
+#      default-topic: link-topic
   application:
     name: scrapper
   jpa:
