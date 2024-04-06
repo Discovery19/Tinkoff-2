@@ -22,7 +22,12 @@ public record ApplicationConfig(
     @NotNull
     AccessType databaseAccessType,
     @NotNull
-    RetryConfig retryConfig
+    RetryConfig retryConfig,
+    @NotNull
+    String bootstrapServer,
+    @NotNull
+    String topic,
+    boolean useQueue
 ) {
 
     private static final String GITHUB_BASE_URL = "https://api.github.com";
