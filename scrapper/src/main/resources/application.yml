@@ -21,8 +21,6 @@ base-urls:
 spring:
   kafka:
     bootstrap-servers: localhost:9092
-#    template:
-#      default-topic: link-topic
   application:
     name: scrapper
   jpa:
@@ -38,10 +36,23 @@ spring:
     enabled: false
 spring-doc:
   api-docs:
-    path: /v3/api-docs  # Путь к JSON спецификации
+    path: /v3/api-docs
   swagger-ui:
-    path: /swagger-ui.html  # Путь к странице Swagger UI
+    path: /swagger-ui.html
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus,info
+      path-mapping:
+        prometheus: metrics
+      base-path: /
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  server:
+    port: 7070
 server:
   port: 8080
 

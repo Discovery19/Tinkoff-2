@@ -16,3 +16,17 @@ server:
 
 logging:
   config: classpath:log4j2-plain.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus,info
+      path-mapping:
+        prometheus: metrics
+      base-path: /
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  server:
+    port: 7080
