@@ -12,6 +12,8 @@ import com.pengrad.telegrambot.response.BaseResponse;
 import edu.java.bot.commands.Command;
 import edu.java.bot.configuration.ApplicationConfig;
 import edu.java.bot.message.TgUserMessageProcessor;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.MeterRegistry;
 import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,17 +27,25 @@ public class TgBot implements Bot {
 
     private final TelegramBot bot;
     private final TgUserMessageProcessor messageProcessor;
+    private final MeterRegistry meterRegistry;
 
     @Autowired
-    public TgBot(ApplicationConfig applicationConfig, TgUserMessageProcessor messageProcessor) {
+    public TgBot(
+        ApplicationConfig applicationConfig,
+        TgUserMessageProcessor messageProcessor,
+        MeterRegistry meterRegistry
+    ) {
         log.info("Starting bot");
         this.bot = new TelegramBot(applicationConfig.telegramToken());
         this.messageProcessor = messageProcessor;
+        this.meterRegistry = meterRegistry;
+
     }
 
     @Override
     public <T extends BaseRequest<T, R>, R extends BaseResponse> void execute(BaseRequest<T, R> request) {
         bot.execute(request);
+        increaseMessageMetric();
     }
 
     @Override
@@ -87,6 +97,11 @@ public class TgBot implements Bot {
     @Override
     public void close() {
         bot.shutdown();
+    }
+
+    private void increaseMessageMetric() {
+        Counter counter = Counter.builder("messages.proceeded").tag("application", "bot").register(meterRegistry);
+        counter.increment();
     }
 }
 
