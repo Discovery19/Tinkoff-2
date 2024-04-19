@@ -7,6 +7,7 @@ import edu.java.scrapper.bot_api.response.BotResponse;
 import edu.java.scrapper.configuration.ApplicationConfig;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;

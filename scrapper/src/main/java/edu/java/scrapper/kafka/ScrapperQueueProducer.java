@@ -20,6 +20,5 @@ public class ScrapperQueueProducer {
         log.info(String.valueOf(request.link()));
         linkKafkaTemplate.send(applicationConfig.topic(), request);
     }
-
 }
 
