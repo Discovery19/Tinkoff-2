@@ -36,7 +36,20 @@ jobs:
           min-coverage-changed-files: 30
           title: Code Coverage
           update-comment: true
+      - name: Log in to the Container registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Build and push to the registry
+        run: |
+          REPO_OWNER_LOWER=discovery19
+          HEAD_REF_LOWER=latest
+          DOCKER_TAG=ghcr.io/$REPO_OWNER_LOWER/scrapper:latest
+          docker build -t $DOCKER_TAG -f scrapper.Dockerfile .
+          docker push $DOCKER_TAG
   checkstyle:
     name: checkstyle
     runs-on: ubuntu-latest
