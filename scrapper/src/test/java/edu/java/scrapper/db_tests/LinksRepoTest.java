@@ -1,6 +1,6 @@
 package edu.java.scrapper.db_tests;
 
-import edu.java.scrapper.api.repositories.jdbc.JdbcLinksRepository;
+import edu.java.scrapper.api.repositories.jdbc.JdbcLinkRepository;
 import edu.java.scrapper.IntegrationTest;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 class LinksRepoTest extends IntegrationTest {
     @Autowired
-    private JdbcLinksRepository linksRepository;
+    private JdbcLinkRepository linksRepository;
     @Autowired
     JdbcTemplate jdbcTemplate;
 
